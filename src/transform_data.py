@@ -66,9 +66,3 @@ def transform_data(input_path, output_path):
     df.to_csv(output_path, index=False)
     print("Cleaned dataset saved")
     return df
-
-
-df = transform_data(
-    "../data/raw/students.csv",
-    "../data/processed/students.csv",
-)
