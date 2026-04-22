@@ -67,7 +67,6 @@ project/
 │
 ├── pipeline.py
 ├── README.md
-└── .env
 ```
 
 ---
