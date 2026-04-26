@@ -32,7 +32,8 @@ SELECT PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY depression_score) AS p75
 FROM students
 )
 SELECT *
-FROM students s, stats_percentile sp
+FROM students s
+CROSS JOIN stats_percentile sp
 WHERE s.depression_score >= sp.p75 AND s.social_connectedness_score <= 21;
 
 -- 4. Comparison between student groups
