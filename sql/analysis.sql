@@ -46,3 +46,19 @@ SELECT *,
 	   		ELSE 'Equal'
 	   END
 FROM avg_type_depression;
+
+-- 5. Detection of high-risk outliers
+
+WITH stats AS (
+SELECT AVG(depression_score) AS mean,
+	   STDDEV(depression_score) AS sd
+FROM students)
+SELECT s.*,
+   	   ROUND((st.mean + st.sd)::NUMERIC,2) AS threshold,
+   	   CASE
+   	   		WHEN s.depression_score > (st.mean + st.sd) THEN 'High Outlier'
+   	   		ELSE 'Normal' 
+   	   END AS category 
+FROM students s
+CROSS JOIN stats st
+WHERE s.depression_score > st.mean + st.sd;
