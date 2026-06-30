@@ -46,7 +46,7 @@ SELECT *,
 	   ROUND(ABS(avg_dom_depression - avg_inter_depression)::NUMERIC,2) AS diff_depression_groups,
 	   CASE
 	   		WHEN avg_dom_depression > avg_inter_depression THEN 'Domestic Higher'
-	   		WHEN avg_dom_depression < avg_inter_depression THEN 'Internatinal Higher'
+	   		WHEN avg_dom_depression < avg_inter_depression THEN 'International Higher'
 	   		ELSE 'Equal'
 	   END AS category
 FROM avg_type_depression;
